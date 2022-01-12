@@ -1,13 +1,492 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+:root{
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --dark-gray: hsl(0, 0%, 55%);
+  --very-dark-gray: hsl(0, 0%, 41%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img{
+  max-width: 100%;
+}
+p{
+  font-size: 15px;
+  font-family: 'Alata', sans-serif;
+  color: var(--very-dark-gray);
+}
+
+button{
+  background-color: transparent;
+  color: white;
+  border: 0;
+  font-family: 'Alata', sans-serif;
+}
+
+
+h2{
+  font-size: 30px;
+}
+
+h1,h2,h3,h4,h5,h6{
+  text-transform: uppercase;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+li{
+  list-style-type: none;
+}
+
+/*header css*/
+.header{
+  position: absolute;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.header .logo{
+  position: relative;
+  z-index: 100;
+  padding-top: 10px;
+}
+
+.header .desktop-nav{
+  display:none;
+}
+
+.header .mobile-nav{
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 98;
+  background-color: black;
+  padding-top: 250px;
+  padding-left: 20px;
+  transition: 0.4s; 
+}
+
+.header .mobile-nav.is-active{
+  left: 0;
+}
+
+.header .mobile-nav ul li button {
+  text-transform:  uppercase;
+  font-size: 35px;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.header .mobile-nav ul li button:hover{
+  border-bottom: 1px solid white;
+}
+
+.header .hamburger{
+  display: block;
+  width: 35px;
+  height: 35px;
+  appearance: none;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+}
+
+.header .hamburger .bar, .hamburger:after, .hamburger:before{
+width: 100%;
+height: 5px;
+content: '';
+display: block;
+background-color: white;
+margin: 6px 0px;
+transition: 0.4s;
+}
+
+.header .hamburger.is-active:before {
+  transform: rotate(-45deg) translate(-8px, 6px);
+}
+
+.header .hamburger.is-active .bar {
+  opacity: 0;
+}
+
+.header .hamburger.is-active:after {
+  transform: rotate(45deg) translate(-9px, -8px);
+}
+
+/*showcase css*/
+.showcase{
+  background: url(./images/mobile/image-hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+}
+
+
+.showcase .overlay{
+  display: flex;
+  align-items: center;
+  height: 700px;
+  padding:0px 20px;
+}
+
+.showcase .overlay h1{
+  color: white;
+  font-size: 46px;
+  border: 2px solid white;
+  padding: 20px;
+}
+
+/*interactive css*/
+
+
+.interactive{
+  padding: 50px 20px;
+  padding-top: 70px;
+  text-align: center;
+}
+
+.interactive .interactive-text{
+padding: 0 30px;
+}
+
+.interactive .interactive-text h2{
+  padding:30px 0 20px;
+  line-height: 1.3;
+}
+
+/*Creations -- mobile version */
+
+
+.creations-mobile{
+  padding:0 20px 50px;
+  margin-top: -20px;
+  margin-bottom:-20px;
+}
+
+.creations-mobile article{
+  position: relative; /*position relative since want to position the text above the image, so text will need to be absolute*/
+}
+
+.creations-mobile article:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.creations-mobile h2{
+  text-align: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.creations-mobile h3{
+  position:absolute;
+  padding: 0 0 15px 20px;
+  bottom:0;
+  color: var(--white);
+  font-size: 24px;
+  width: 162px;
+  line-height: 1.2;
+}
+
+
+.creations-mobile section{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+  place-items: center;
+}
+
+.creations-mobile .btn-container{
+text-align: center;
+padding: 40px 0;
+}
+
+.creations-mobile .btn-container .btn{
+  color: var(--black);
+  border: 2px solid var(--black);
+  padding: 20px 80px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  transition: background-color 0.3s;
+}
+
+.creations-mobile .btn-container .btn:hover{
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.creations-desktop{
+  display: none;
+}
+
+/*css for footer*/
+
+.footer{
+  background-color: var(--black);
+  padding: 30px 0;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.footer .logo{
+  padding: 30px;
+}
+
+.footer .links{
+  margin-bottom: 30px;
+}
+
+.footer ul li{
+  margin-bottom: 20px;
+}
+
+.footer ul li button{
+  font-size: 16px;
+  transition:  0.3s;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+}
+
+
+.footer ul li button:hover{
+  cursor: pointer;
+  border-bottom: 1px solid white;
+}
+
+.footer .socials{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50px;
+  font-size: 26px;
+}
+
+.footer div .copyright{
+  color: var(--dark-gray);
+  font-family: 'Alata', sans-serif;
+  font-size: 16px;
+}
+
+.footer .socials li{
+  transition: 0.1s ease;
+}
+
+.footer .socials li:hover{
+  cursor: pointer;
+  border-bottom: 1px solid white;
+  padding-bottom: 3px;
+}
+
+
+
+/*css for desktop view*/
+@media (min-width: 1024px){
+  
+  /*getting rid of mobile nav hamburger, if it is open it will stop displaying if the window size is increased*/
+  .header .hamburger{
+    display: none;
+  }
+
+  .header .mobile-nav.is-active{
+    display: none;
+  }
+  
+
+  /*desktop nav bar*/
+  .header .desktop-nav{
+    display: flex;
+    padding-right: 5%;
+    margin-top: 5px;
+  }
+
+  .header .desktop-nav ul li{
+    display: inline;
+    margin-right: 50px;
+  }
+
+  .header .desktop-nav button{
+    font-size: 1.2rem;
+    border-bottom: 2px solid transparent;
+    transition:  0.3s ease;
+  }
+  
+  .header .desktop-nav button:hover{
+    cursor: pointer;
+    border-bottom: 2px solid white;
+  }
+
+  .showcase{
+    background: url(./images/desktop/image-hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .showcase .overlay h1{
+    width: 800px;
+    font-size: 80px;
+    margin-top:30px;
+    margin-left: 80px;
+  }
+
+  .header .logo{
+    margin-left:80px;
+  }
+
+
+  .interactive{
+    position:relative;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-left: 80px;
+  }
+
+  .interactive-text{
+    position:absolute;
+    width: 600px;
+    right: 50px;
+    bottom:0;
+    background-color:white;
+  }
+
+
+
+  .creations-mobile{
+    display: none;
+  }
+
+  .creations-desktop{
+    display:block;
+    padding: 0 80px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+
+  
+
+  .creations-desktop .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+    margin:auto;
+    max-width: 1000px;
+    padding-bottom:10px;
+  }
+
+  .creations-desktop .btn-container{
+    text-align: center;
+    }
+    
+    .creations-desktop .btn-container .btn{
+      color: var(--black);
+      border: 2px solid var(--black);
+      padding: 10px 60px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-size: 16px;
+      letter-spacing: 0.2em;
+      transition: background-color 0.3s;
+    }
+    
+    .creations-desktop .btn-container .btn:hover{
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    .creations-desktop section{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:20px;
+      max-width: 1000px;
+      margin:auto;
+    }
+
+    .creations-desktop article{
+      position: relative; /*position relative since want to position the text above the image, so text will need to be absolute*/
+    }
+
+    .creations-desktop article:hover{
+      opacity: 0.7;
+      cursor: pointer;
+    }
+    
+    .creations-desktop h2{
+      text-align: center;
+      padding-bottom: 50px;
+      padding-top: 50px;
+    }
+    
+    .creations-desktop h3{
+      position:absolute;
+      padding: 0 0 30px 30px;
+      bottom:0;
+      color: var(--white);
+      font-size: 24px;
+      width: 162px;
+      line-height: 1.2;
+    }
+
+    .footer{
+      padding: 30px 100px;
+      text-align: initial;
+      display: flex;
+      align-items: initial;
+      flex-direction: row;
+      justify-content: space-between;
+      
+  
+    }
+  
+    .footer .logo{
+      padding:0;
+      margin-bottom: 20px;
+    }
+  
+    .footer .flex-right-side .copyright{
+      text-align: end;
+    }
+    
+    .footer .flex-item-links .links li{
+      display:inline;
+      margin-right: 40px;
+    }
+}
+
+@media (min-width: 1280px){
+  .creations-desktop .title{
+    max-width: 1100px;
+  }
+
+  .creations-desktop section{
+    max-width: 1100px;
+  }
+
+  .interactive-text{
+    
+    width: 700px;
+    right: 150px;
+    bottom: 53px;
+  }
 }
